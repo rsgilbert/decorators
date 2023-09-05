@@ -1,0 +1,2 @@
+To run a typescript file, do:
+> npx ts-node src/evaluation-order.ts
