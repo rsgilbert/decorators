@@ -24,3 +24,24 @@ function sealed(constructor: Function) {
 const bugReport = new BugReport('I love movies')
 bugReport.print()
 
+
+function reportableClassDecorator<T extends { new (...args: any[]) : {} }>(constructor: T) {
+    return class extends constructor {
+        reportingURL = 'http://www.report'
+    }
+}
+
+
+@reportableClassDecorator
+class AnalysisReport {
+    type = 'report'
+    title : string;
+
+    constructor(t: string) {
+        this.title = t;
+    }
+}
+
+const a: any = new AnalysisReport('Jackson is good')
+console.log(a.title)
+console.log(a.reportingURL)
